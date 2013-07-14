@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <emmintrin.h>
+#include "rdtsc.h"
 #include "matrix.h"
 
 #define SM (CLS / sizeof (double))
@@ -12,12 +13,15 @@ main (int argc, char *argv[])
   double *restrict rres;
   double *restrict rmul1;
   double *restrict rmul2;
+  long before, after;
 
 #ifdef CHECK_RESULT
   init_matrix (mul1);
   init_matrix (mul2);
   reset_matrix (res);
 #endif
+
+  before = rdtsc ();
 
   for (i = 0; i < N; i += SM)
     for (j = 0; j < N; j += SM)
@@ -39,6 +43,9 @@ main (int argc, char *argv[])
                   }
               }
           }
+
+  after = rdtsc ();
+  printf ("cpu cycles: %ld\n", after - before);
 
 #ifdef CHECK_RESULT
   printf ("%.0f\n", sum_matrix (res));
