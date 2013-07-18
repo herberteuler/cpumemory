@@ -23,4 +23,4 @@ clean:
 
 .PHONY:	distclean
 distclean:	clean
-	$(RM) matrix1 matrix2 matrix3
+	$(RM) matrix1 matrix2 matrix3 l1acc
