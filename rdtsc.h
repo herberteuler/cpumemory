@@ -1,3 +1,6 @@
+/* Copyright: Kazutomo Yoshii
+   See http://www.mcs.anl.gov/~kazutomo/rdtsc.html  */
+
 #ifndef __RDTSC_H_DEFINED__
 #define __RDTSC_H_DEFINED__
 
