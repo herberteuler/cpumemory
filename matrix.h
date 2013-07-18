@@ -1,3 +1,7 @@
+/* This program is basically the one in the paper /What Every
+   Programmer Should Know About Memory/, section 6.2.  See the paper
+   for more information. */
+
 #ifndef MATRIX_H
 #define MATRIX_H
 
