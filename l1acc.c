@@ -16,7 +16,7 @@ f (int v[N])
       v[j+2] + 0;
       v[j+3] + 0;
     }
- }
+}
 
 static inline void
 g (int v[N])
@@ -30,7 +30,7 @@ g (int v[N])
       v[j+2] = 0;
       v[j+3] = 0;
     }
- }
+}
 
 int
 main (int argc, char *argv[])
