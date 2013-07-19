@@ -1,6 +1,6 @@
 /* This program is basically the one in the paper /What Every
    Programmer Should Know About Memory/ by Ulrich Drepper, section
-   6.2.  See the paper for more information. */
+   6.2.  See the paper for more information.  */
 
 #include <stdlib.h>
 #include <stdio.h>
