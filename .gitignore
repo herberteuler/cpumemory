@@ -4,5 +4,5 @@ matrix2
 matrix3
 l1acc
 acc
-perf.data
+perf.data*
 *.o
