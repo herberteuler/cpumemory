@@ -6,7 +6,7 @@ CFLAGS += -DACC_NPAD=$(ACC_NPAD) \
 	  -DCLS=$$(getconf LEVEL1_DCACHE_LINESIZE) \
 	  -std=c99
 
-all:	matrix1 matrix2 matrix3 l1acc acc
+all:	matrix1 matrix2 matrix3 acc
 
 matrix1:	matrix1.o
 	$(CC) $(CFLAGS) -o matrix1 $(^)
@@ -19,9 +19,6 @@ matrix3:	matrix3.o
 
 matrix1.o matrix2.o matrix3.o:	matrix.h
 
-l1acc:	l1acc.o
-	$(CC) $(CFLAGS) -o l1acc $(^)
-
 acc:	acc.o
 	$(CC) $(CFLAGS) -o acc $(^)
 
@@ -31,4 +28,4 @@ clean:
 
 .PHONY:	distclean
 distclean:	clean
-	$(RM) matrix1 matrix2 matrix3 l1acc acc
+	$(RM) matrix1 matrix2 matrix3 acc
