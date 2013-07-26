@@ -12,6 +12,24 @@ function cycles_of ()
            | sed 's/,//g')
 }
 
+# normalize working_set_size
+function normalize ()
+{
+  local working_set_size=$1
+  local scale=
+
+  if echo $working_set_size | grep -qs '[kKmM]$'; then
+    scale=$(echo $working_set_size | grep -o '.$')
+    if [[ $scale = 'k' || $scale = 'K' ]]; then
+      scale=1024
+    else
+      scale=1048576
+    fi
+  fi
+
+  echo $((scale * $(echo $working_set_size | sed 's/.$//')))
+}
+
 #set -x
 make clean
 make ACC_NPAD=${ACC_NPAD:=7}
@@ -19,6 +37,7 @@ make ACC_NPAD=${ACC_NPAD:=7}
 repeats=${repeats:-500}
 element_size=$((8 + ACC_NPAD * 8))
 for working_set_size; do
+  working_set_size=$(normalize $working_set_size)
   raw_cycles=$(cycles_of 0 $working_set_size)
   working_cycles=$(cycles_of $repeats $working_set_size)
   access_count=$((working_set_size / element_size - 1))
